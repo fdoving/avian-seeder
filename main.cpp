@@ -44,7 +44,7 @@ public:
 
     void ParseCommandLine(int argc, char **argv)
     {
-        static const char *help = "Ravencoin-seeder\n"
+        static const char *help = "avian-seeder\n"
                                   "Usage: %s -h <host> -n <ns> [-m <mbox>] [-t <threads>] [-p <port>]\n"
                                   "\n"
                                   "Options:\n"
@@ -223,7 +223,7 @@ extern "C" void *ThreadCrawler(void *data)
             res.nClientV = 0;
             res.nHeight = 0;
             res.strClientV = "";
-            bool getaddr = res.ourLastSuccess + 86400 < now;
+            bool getaddr = res.ourLastSuccess + 3600 < now;
             res.fGood = TestNode(res.service, res.nBanTime, res.nClientV, res.strClientV, res.nHeight, getaddr ? &addr : NULL);
         }
         db.ResultMany(ips);
@@ -468,13 +468,13 @@ extern "C" void *ThreadStats(void *)
     return nullptr;
 }
 
-static const string mainnet_seeds[] = {"seed-raven.bitactivate.com",
-                                       "seed-raven.ravencoin.com",
-                                       "seed-raven.ravencoin.org",
+static const string mainnet_seeds[] = {"dnsseed.us.avn.network",
+                                       "dnsseed.eu.avn.network",
+                                       "",
                                        ""};
-static const string testnet_seeds[] = {"seed-testnet-raven.bitactivate.com",
-                                       "seed-testnet-raven.ravencoin.com",
-                                       "seed-testnet-raven.ravencoin.org",
+static const string testnet_seeds[] = {"",
+                                       "",
+                                       "",
                                        ""};
 static const string regtest_seeds[] = {"localhost",
                                        ""};
@@ -485,7 +485,7 @@ extern "C" void *ThreadSeeder(void *)
 {
     if (!fTestNet && !fRegTest)
     {
-        db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8767), true);
+        db.Add(CService("kjy2eqzk4zwi5zd3.onion", 7895), true);
     }
     do
     {
