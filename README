@@ -1,8 +1,12 @@
-ravencoin-seeder
+avian-seeder
 ==============
 
-Ravencoin-seeder is a crawler for the Ravencoin network, which exposes a list
+avian-seeder is a crawler for the Avian network, which exposes a list
 of reliable nodes via a built-in DNS server.
+
+Original project https://github.com/sipa/bitcoin-seeder
+Forked from https://github.com/RavenProject/ravencoin-seeder
+
 
 Features:
 * regularly revisits known nodes to check their availability
